@@ -1,0 +1,8 @@
+This game was created by Linkatel, inspired by the video of @CoderSpaceChannel.
+Link of the video : https://www.youtube.com/watch?v=ECqUrT7IdqQ
+Thanks at this person to have make this tutorial because it's a project i wanted to do but didn't know how.
+The game is in pre-alpha and this part is probably gonna be a demo.
+If you like the game, don't hesitate to let me know via github or via a website that I probably develop in the future (if i make a website, i will put the link on this document and probably on the github).
+If you have any ideas, put them on the github comments.
+This game is not copyright so please dont take my code without reference at me and @CoderSpaceChannel.
+Thanks to play and Good Game !!!
