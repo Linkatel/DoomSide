@@ -1,7 +1,7 @@
 import math
 
 # settings
-RES = WIDTH, HEIGHT = 1200, 1000
+RES = WIDTH, HEIGHT = 1600, 900
 HALF_WIDTH = WIDTH // 2
 HALF_HEIGHT = HEIGHT // 2
 FPS = 0
