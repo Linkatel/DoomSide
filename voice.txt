@@ -1,25 +1,42 @@
-fr :
-    Je t'ai botté le cul avec style
-    Hé, je suis là
-    Je vais te faire manger tes tripes
-    Shhhhh, ferme la
-    Tu veux vraiment me tuer ? 
-    Retourne chez ta mère, petite merde
-    Trou du cul !!!
-    Hors de ma vue 
-    AH ah, t'es mort
-    Tu penses vraiment pouvoir me battre ?
-    Arrête de te battre, tu vas te blesser
-    C'est pas possible d'être aussi mauvais
-en :
-    I kicked your ass in style
-    Hey, I'm there
-    I'm gonna make you eat your guts
-    Shhhhh, shut up 
-    Go back to your mother, you little shit
-    Asshole !!!
-    Get out of my sight
-    Ah ah, you're dead
-    You really think you can beat me ?
-    Stop fighting, you will hurt yourself
-    It's not possible to be that bad
+PREDEFINI :
+    fr:
+        Qu.. Qu'est ce qu'il se passe ?  Où suis-je ? Est-ce l'enfer ? 
+        ↪ Ca y ressemble 
+    en:
+        Wh.. What's going on?  Where am I? Is this hell? 
+        ↪ It looks similar 
+
+PUNCHLINES :
+    fr :
+        Je t'ai botté le cul avec style
+        Hé, je suis là
+        Je vais te faire manger tes tripes
+        Shhhhh, ferme la
+        Tu veux vraiment me tuer ? 
+        Retourne chez ta mère, petite merde
+        Trou du cul !!!
+        Hors de ma vue 
+        AH ah, t'es mort
+        Tu penses vraiment pouvoir me battre ?
+        Arrête de te battre, tu vas te blesser
+        C'est pas possible d'être aussi mauvais
+    //NOUVEAUX
+        Moi ? Arreter ? Naaaaaaaa
+        Tuer des démons, ma vocation
+        C'est toujours à moi de nettoyer
+    en :
+        I kicked your ass in style
+        Hey, I'm there
+        I'm gonna make you eat your guts
+        Shhhhh, shut up 
+        Go back to your mother, you little shit
+        Asshole !!!
+        Get out of my sight
+        Ah ah, you're dead
+        You really think you can beat me ?
+        Stop fighting, you will hurt yourself
+        It's not possible to be that bad
+    //NOUVEAUX
+        Me? Stop? Naaaaaaaa
+        Killing demons, my vocation
+        It's always my turn to clean up

@@ -21,16 +21,16 @@ class ObjectHandler:
 
       # add_npc("Name"(game, pos=(x, y)))
         add_npc(SoldierZombieNPC(game, pos=(3, 12)))
-        #add_npc(SoldierZombieNPC(game, pos=(20, 9)))
-        #add_npc(SoldierZombieNPC(game, pos=(20, 13)))
-        #add_npc(SoldierZombieNPC(game, pos=(7, 17)))
-       # add_npc(SoldierZombieNPC(game, pos=(3, 20)))
+        add_npc(SoldierZombieNPC(game, pos=(20, 9)))
+        add_npc(SoldierZombieNPC(game, pos=(20, 13)))
+        add_npc(SoldierZombieNPC(game, pos=(7, 17)))
+        add_npc(SoldierZombieNPC(game, pos=(3, 20)))
         add_npc(ZombieNPC(game, pos=(14, 12)))
-      #  add_npc(ZombieNPC(game, pos=(8, 19)))
-      #  add_npc(ZombieNPC(game, pos=(10, 22)))
-   #     add_npc(ZombieNPC(game, pos=(15, 22)))
-    #    add_npc(ZombieNPC(game, pos=(10, 38)))
-    #    add_npc(CyberDemonNPC(game, pos=(10, 33)))
+        add_npc(ZombieNPC(game, pos=(8, 19)))
+        add_npc(ZombieNPC(game, pos=(10, 22)))
+        add_npc(ZombieNPC(game, pos=(15, 22)))
+        add_npc(ZombieNPC(game, pos=(10, 38)))
+        add_npc(CyberDemonNPC(game, pos=(10, 33)))
 
     def check_win(self):
         if not len(self.npc_positions):

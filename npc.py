@@ -196,7 +196,7 @@ class SoldierZombieNPC(NPC):
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 3.0
         self.health = 200
-        self.attack_damage = 25
+        self.attack_damage = 0#25
         self.speed = 0.03
         self.accuracy = 0.35
 
