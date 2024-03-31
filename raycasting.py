@@ -1,3 +1,5 @@
+# � 2023 Linkatel. All rights reserved
+
 import pygame as pg
 import math
 from settings import *

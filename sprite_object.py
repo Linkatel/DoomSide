@@ -1,10 +1,12 @@
+# � 2023 Linkatel. All rights reserved
+
 import pygame as pg
 from settings import *
 import os
 from collections import deque
 
 class SpriteObject:
-    def __init__(self, game, path='resources/sprites/static_sprites/candlebra.png', pos=(10.5, 3.5), scale=0.7, shift=3.3):
+    def __init__(self, game, path='resources/sprites/static_sprites/easter_egg_pgaz.png', pos=(13.5, 18), scale=0.7, shift=3.3):
         self.game = game
         self.player = game.player
         self.x, self.y = pos
@@ -51,9 +53,8 @@ class SpriteObject:
     def update(self):
         self.get_sprite()
 
-
 class AnimatedSprite(SpriteObject):
-    def __init__(self, game, path='resources/sprites/animated_sprites/green_light/0.png', pos=(11.9, 3.1), scale=0.8, shift=3.3, animation_time=120):
+    def __init__(self, game, path='resources/sprites/animated_sprites/red_light/0.png', pos=(12, 3), scale=0.8, shift=3.3, animation_time=120):
         super().__init__(game, path, pos, scale, shift)
         self.animation_time = animation_time
         self.path = path.rsplit("/", 1)[0]

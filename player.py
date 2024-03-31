@@ -1,5 +1,8 @@
+# � 2023 Linkatel. All rights reserved
+
 from settings import *
 import pygame as pg
+from object_renderer import *
 import math
 
 class Player:
@@ -64,10 +67,20 @@ class Player:
         if keys[pg.K_d]:
             dx += -speed_sin
             dy += speed_cos
+        if keys[pg.K_f]:
+            self.game.object_renderer.menu()
+            pg.display.flip()
+            pg.time.delay(10)
+            pg.mouse.set_visible(True)
             
         self.check_wall_collision(dx, dy)
 
         self.angle %= math.tau
+
+        if keys[pg.K_LEFT]:
+            self.angle -= PLAYER_ROT_SPEED * self.game.delta_time
+        if keys[pg.K_RIGHT]:
+            self.angle += PLAYER_ROT_SPEED * self.game.delta_time
         
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map

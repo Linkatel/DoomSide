@@ -1,12 +1,16 @@
+# � 2023 Linkatel. All rights reserved
+
 from sprite_object import *
 from random import randint, random
 from sound import *
+import random
 
 
 class NPC(AnimatedSprite):
     def __init__(self, game, path='resources/sprites/npc/soldier/0.png', pos=(10.5, 5.5),
                  scale=0.6, shift=3.1, animation_time=180):
         super().__init__(game, path, pos, scale, shift, animation_time)
+        # Tous les dossiers d'animation
         self.attack_images = self.get_images(self.path + '/attack')
         self.death_images = self.get_images(self.path + '/death')
         self.idle_images = self.get_images(self.path + '/idle')
@@ -53,7 +57,7 @@ class NPC(AnimatedSprite):
     def attack(self):
         if self.animation_trigger:
             self.game.sound.npc_shot.play()
-            if random() < self.accuracy:
+            if self.accuracy:
                 self.game.player.get_damage(self.attack_damage)
         
     def animate_death(self):
@@ -82,6 +86,12 @@ class NPC(AnimatedSprite):
         if self.health < 1:
             self.alive = False
             self.game.sound.npc_death.play()
+            punchline_sounds = [
+                self.game.sound.punchline1,
+                self.game.sound.punchline2
+            ]
+            selected_punchline = random.choice(punchline_sounds)
+            selected_punchline.play()
         
     def run_logic(self):
         if self.alive:
@@ -184,7 +194,7 @@ class SoldierZombieNPC(NPC):
     def __init__(self, game, path='resources/sprites/npc/soldier/0.png', pos=(10.5, 5.5),
                  scale=0.6, shift=3.1, animation_time=180):
         super().__init__(game, path, pos, scale, shift, animation_time)
-        self.attack_dist = 1.0
+        self.attack_dist = 3.0
         self.health = 200
         self.attack_damage = 25
         self.speed = 0.03
@@ -196,8 +206,8 @@ class ZombieNPC(NPC):
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 1.0
         self.health = 100
-        self.attack_damage = 15
-        self.speed = 0.08
+        self.attack_damage = 0#15
+        self.speed = 0.05
         self.accuracy = 0.35
 
 class CyberDemonNPC(NPC):
@@ -206,6 +216,7 @@ class CyberDemonNPC(NPC):
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 6
         self.health = 500
-        self.attack_damage = 20
+        self.attack_damage = 0#20
         self.speed = 0.060
         self.accuracy = 0.25
+    

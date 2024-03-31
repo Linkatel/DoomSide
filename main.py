@@ -1,3 +1,5 @@
+# � 2023 Linkatel. All rights reserved
+
 import pygame as pg
 import sys
 from settings import *
@@ -28,22 +30,23 @@ class Game:
         self.map = Map(self)
         self.player = Player(self)
         self.object_renderer = ObjectRenderer(self)
+        self.sprite_object = SpriteObject(self)
         self.raycasting = RayCasting(self)
         self.object_handler = ObjectHandler(self)
         self.weapon = Weapon(self)
         self.sound = Sound(self)
         self.pathfinding = PathFinding(self)
         pg.mixer.music.play(-1)
-
     
     def update(self):
         self.player.update()
         self.raycasting.update()
+        self.sprite_object.update()
         self.object_handler.update()
         self.weapon.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
-        pg.display.set_caption(f'{self.clock.get_fps():.1f}')
+        pg.display.set_caption('DoomSide')#f'{self.clock.get_fps():.1f}'
         
     def draw(self):
         self.object_renderer.draw()

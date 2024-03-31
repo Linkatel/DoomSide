@@ -1,3 +1,5 @@
+# � 2023 Linkatel. All rights reserved
+
 from sprite_object import *
 
 

@@ -1,5 +1,8 @@
+# � 2023 Linkatel. All rights reserved
+
 import pygame as pg
 from settings import *
+from map import *
 
 class ObjectRenderer:
     def __init__(self, game):
@@ -14,6 +17,7 @@ class ObjectRenderer:
         self.digits = dict(zip(map(str, range(11)), self.digit_images))
         self.game_over_image = self.get_texture('resources/textures/game_over.png', RES)
         self.win_image = self.get_texture('resources/textures/win.png', RES)
+        self.menu_image = self.get_texture('resources/textures/menu.png', RES)
         
     def draw(self):
         self.draw_background()
@@ -25,6 +29,9 @@ class ObjectRenderer:
         
     def game_over(self):
         self.screen.blit(self.game_over_image, (0, 0))
+        
+    def menu(self):
+        self.screen.blit(self.menu_image, (0, 0))
         
     def draw_player_health(self):
         health = str(self.game.player.health)
@@ -52,6 +59,7 @@ class ObjectRenderer:
         texture = pg.image.load(path).convert_alpha()
         return pg.transform.scale(texture, res)
     
+    
     def load_wall_textures(self):
         return {
             1: self.get_texture('resources/textures/1.png'),
@@ -59,4 +67,6 @@ class ObjectRenderer:
             3: self.get_texture('resources/textures/3.png'),
             4: self.get_texture('resources/textures/4.png'),
             5: self.get_texture('resources/textures/5.png'),
+            6: self.get_texture('resources/textures/6.png'),
+            7: self.get_texture('resources/textures/wait_wall.png')
         }
