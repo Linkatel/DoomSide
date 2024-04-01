@@ -88,7 +88,8 @@ class NPC(AnimatedSprite):
             self.game.sound.npc_death.play()
             punchline_sounds = [
                 self.game.sound.punchline1,
-                self.game.sound.punchline2
+                self.game.sound.punchline2,
+                self.game.sound.punchline3,
             ]
             selected_punchline = random.choice(punchline_sounds)
             selected_punchline.play()
