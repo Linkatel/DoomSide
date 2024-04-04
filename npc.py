@@ -4,6 +4,7 @@ from sprite_object import *
 from random import randint, random
 from sound import *
 import random
+import time
 
 
 class NPC(AnimatedSprite):
@@ -86,6 +87,8 @@ class NPC(AnimatedSprite):
         if self.health < 1:
             self.alive = False
             self.game.sound.npc_death.play()
+            // Ajout de time.sleep
+            time.sleep(1)
             punchline_sounds = [
                 self.game.sound.punchline1,
                 self.game.sound.punchline2,
