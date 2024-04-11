@@ -87,12 +87,17 @@ class NPC(AnimatedSprite):
         if self.health < 1:
             self.alive = False
             self.game.sound.npc_death.play()
-            // Ajout de time.sleep
+            # Ajout de time.sleep
             time.sleep(1)
             punchline_sounds = [
                 self.game.sound.punchline1,
                 self.game.sound.punchline2,
                 self.game.sound.punchline3,
+                self.game.sound.punchline4,
+                self.game.sound.punchline5,
+                self.game.sound.punchline6,
+                self.game.sound.punchline7,
+                self.game.sound.punchline8,
             ]
             selected_punchline = random.choice(punchline_sounds)
             selected_punchline.play()

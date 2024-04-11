@@ -48,6 +48,7 @@ class Game:
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption('DoomSide')#f'{self.clock.get_fps():.1f}'
         
+        
     def draw(self):
         self.object_renderer.draw()
         self.weapon.draw()
