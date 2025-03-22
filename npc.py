@@ -87,8 +87,13 @@ class NPC(AnimatedSprite):
         if self.health < 1:
             self.alive = False
             self.game.sound.npc_death.play()
-            # Ajout de time.sleep
-            time.sleep(1)
+
+            # Planifier le punchline après 1 seconde (1000 ms)
+            pg.time.set_timer(NPC_PUNCHLINE_EVENT, 1000, loops=1)
+
+    def handle_event(self, event):
+        """ À appeler dans la boucle principale du jeu pour gérer l'événement """
+        if event.type == NPC_PUNCHLINE_EVENT:
             punchline_sounds = [
                 self.game.sound.punchline1,
                 self.game.sound.punchline2,
