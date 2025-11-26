@@ -19,7 +19,7 @@ class NPC(AnimatedSprite):
         self.walk_images = self.get_images(self.path + '/walk')
 
         self.attack_dist = randint(3, 6)
-        self.speed = 0.03
+        self.speed = 1.8
         self.size = 20
         self.health = 100
         self.attack_damage = 10
@@ -55,8 +55,9 @@ class NPC(AnimatedSprite):
         
         if next_pos not in self.game.object_handler.npc_positions:
             angle = math.atan2(next_y + 0.5 - self.y, next_x + 0.5 - self.x)
-            dx = math.cos(angle) * self.speed
-            dy = math.sin(angle) * self.speed
+            step = self.speed * self.game.delta_time
+            dx = math.cos(angle) * step
+            dy = math.sin(angle) * step
             self.check_wall_collision(dx, dy)
         
     def attack(self):
@@ -166,7 +167,6 @@ class NPC(AnimatedSprite):
         sin_a = math.sin(ray_angle)
         cos_a = math.cos(ray_angle)
 
-        # horizontals
         y_hor, dy = (y_map + 1, 1) if sin_a > 0 else (y_map - 1e-6, -1)
 
         depth_hor = (y_hor - oy) / sin_a
@@ -187,7 +187,6 @@ class NPC(AnimatedSprite):
             y_hor += dy
             depth_hor += delta_depth
 
-        # verticals
         x_vert, dx = (x_map + 1, 1) if cos_a > 0 else (x_map - 1e-6, -1)
 
         depth_vert = (x_vert - ox) / cos_a
@@ -221,10 +220,10 @@ class SoldierZombieNPC(NPC):
     def __init__(self, game, path='resources/sprites/npc/soldier/0.png', pos=(10.5, 5.5),
                  scale=0.6, shift=3.1, animation_time=180):
         super().__init__(game, path, pos, scale, shift, animation_time)
-        self.attack_dist = 3.0
+        self.attack_dist = 2.5
         self.health = 200
         self.attack_damage = 25
-        self.speed = 0.03
+        self.speed = 1.8
         self.accuracy = 0.35
 
 class ZombieNPC(NPC):
@@ -234,7 +233,7 @@ class ZombieNPC(NPC):
         self.attack_dist = 1.0
         self.health = 100
         self.attack_damage = 15
-        self.speed = 0.05
+        self.speed = 3.0
         self.accuracy = 0.35
 
 class CyberDemonNPC(NPC):
@@ -244,6 +243,6 @@ class CyberDemonNPC(NPC):
         self.attack_dist = 6
         self.health = 500
         self.attack_damage = 20
-        self.speed = 0.060
+        self.speed = 4.8
         self.accuracy = 0.25
     

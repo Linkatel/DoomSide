@@ -99,7 +99,7 @@ class Game:
         self.object_handler.update()
         self.weapon.update()
         pg.display.flip()
-        self.delta_time = self.clock.tick(FPS)
+        self.delta_time = max(self.clock.tick(FPS) / 1000, 0.0001)
         pg.display.set_caption('DoomSide')                 #afficher les fps sur la fenetre : f'{self.clock.get_fps():.1f}'
         
         
