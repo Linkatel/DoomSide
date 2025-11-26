@@ -5,7 +5,7 @@ from random import randint, random
 from sound import *
 import random
 import time
-
+from main import NPC_PUNCHLINE_EVENT
 
 class NPC(AnimatedSprite):
     def __init__(self, game, path='resources/sprites/npc/soldier/0.png', pos=(10.5, 5.5),
@@ -29,6 +29,10 @@ class NPC(AnimatedSprite):
         self.ray_cast_value = False
         self.frame_counter = 0
         self.player_search_trigger = False
+
+        # Attribut pour stocker le son de punchline sélectionné
+        self.selected_punchline = None  # initialisé à None par défaut
+
                 
     def update(self):
         self.check_animation_time()
@@ -56,10 +60,11 @@ class NPC(AnimatedSprite):
             self.check_wall_collision(dx, dy)
         
     def attack(self):
-        if self.animation_trigger:
-            self.game.sound.npc_shot.play()
-            if self.accuracy:
-                self.game.player.get_damage(self.attack_damage)
+        if ENABLE_DAMAGE == True:
+            if self.animation_trigger:
+                self.game.sound.npc_shot.play()
+                if random() < self.accuracy:
+                    self.game.player.get_damage(self.attack_damage)
         
     def animate_death(self):
         if not self.alive:
@@ -92,7 +97,7 @@ class NPC(AnimatedSprite):
             pg.time.set_timer(NPC_PUNCHLINE_EVENT, 1000, loops=1)
 
     def handle_event(self, event):
-        """ À appeler dans la boucle principale du jeu pour gérer l'événement """
+        """ Gère les événements pour tous les NPC """
         if event.type == NPC_PUNCHLINE_EVENT:
             punchline_sounds = [
                 self.game.sound.punchline1,
@@ -102,10 +107,12 @@ class NPC(AnimatedSprite):
                 self.game.sound.punchline5,
                 self.game.sound.punchline6,
                 self.game.sound.punchline7,
-                self.game.sound.punchline8,
             ]
-            selected_punchline = random.choice(punchline_sounds)
-            selected_punchline.play()
+            self.selected_punchline = random.choice(punchline_sounds)
+            self.game.sound.punchline_channel.play(self.selected_punchline, loops=0) # 'Sound' object has no attribute 'punchline_channel'
+
+
+
         
     def run_logic(self):
         if self.alive:
@@ -113,10 +120,10 @@ class NPC(AnimatedSprite):
             self.check_hit_in_npc()
             if self.pain:
                 self.animate_pain()
-                
+
             elif self.ray_cast_value:
                 self.player_search_trigger = True
-                
+
                 if self.dist < self.attack_dist:
                     self.animate(self.attack_images)
                     self.attack()
@@ -127,11 +134,17 @@ class NPC(AnimatedSprite):
             elif self.player_search_trigger:
                 self.animate(self.walk_images)
                 self.movement()
-                
+
             else:
                 self.animate(self.idle_images)
         else:
             self.animate_death()
+
+        # Vérifie si un punchline a été joué, et si le canal est libre
+        if self.selected_punchline and not self.game.sound.punchline_channel.get_busy():
+            self.selected_punchline = None
+
+
         
                 
     @property
@@ -210,7 +223,7 @@ class SoldierZombieNPC(NPC):
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 3.0
         self.health = 200
-        self.attack_damage = 0#25
+        self.attack_damage = 25
         self.speed = 0.03
         self.accuracy = 0.35
 
@@ -220,7 +233,7 @@ class ZombieNPC(NPC):
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 1.0
         self.health = 100
-        self.attack_damage = 0#15
+        self.attack_damage = 15
         self.speed = 0.05
         self.accuracy = 0.35
 
@@ -230,7 +243,7 @@ class CyberDemonNPC(NPC):
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 6
         self.health = 500
-        self.attack_damage = 0#20
+        self.attack_damage = 20
         self.speed = 0.060
         self.accuracy = 0.25
     

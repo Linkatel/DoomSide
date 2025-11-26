@@ -13,7 +13,8 @@ from weapon import *
 from sound import *
 from pathfinding import *
 
-import pygame as pg
+NPC_PUNCHLINE_EVENT = pg.USEREVENT + 1
+
 
 def get_resolution():
     pg.init()
@@ -68,7 +69,7 @@ class Game:
     def __init__(self, resolution):
         pg.init()
         pg.mouse.set_visible(False)
-        self.screen = pg.display.set_mode(resolution)
+        self.screen = pg.display.set_mode(RES)#resolution
         pg.event.set_grab(True)
         self.clock = pg.time.Clock()
         self.delta_time = 1
@@ -88,8 +89,9 @@ class Game:
         self.weapon = Weapon(self)
         self.sound = Sound(self)
         self.pathfinding = PathFinding(self)
-        pg.mixer.music.play(-1)
-    
+        if ENABLE_MUSIC == True:
+            pg.mixer.music.play(-1)
+            
     def update(self):
         self.player.update()
         self.raycasting.update()
@@ -107,15 +109,25 @@ class Game:
         
     def check_events(self):
         self.global_trigger = False
+        punchline_triggered = False  # Permet d'éviter que plusieurs NPC jouent une punchline
+
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 pg.quit()
                 sys.exit()
             elif event.type == self.global_event:
                 self.global_trigger = True
-                
+
+            # Sélectionner un seul NPC pour jouer la punchline
+            if event.type == NPC_PUNCHLINE_EVENT and not punchline_triggered:
+                if self.object_handler.npc_list:
+                    npc = random.choice(self.object_handler.npc_list)  # Choisit un NPC au hasard
+                    npc.handle_event(event)
+                    punchline_triggered = True  # Bloque les autres NPC pour cet événement
+
             for npc in self.object_handler.npc_list:
                 npc.handle_event(event)
+
             self.player.single_fire_event(event)
         
     def run(self):
@@ -125,6 +137,6 @@ class Game:
             self.draw()
             
 if __name__ == '__main__':
-    resolution = get_resolution()
-    game = Game(resolution)
+    #resolution = get_resolution()
+    game = Game(RES)#resolution
     game.run()

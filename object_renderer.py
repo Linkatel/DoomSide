@@ -43,7 +43,7 @@ class ObjectRenderer:
         self.screen.blit(self.blood_screen, (0, 0))
         
     def draw_background(self):
-        self.sky_offset = (self.sky_offset + 4.5 * self.game.player.rel) % WIDTH
+        self.sky_offset = (self.sky_offset + 0.5 * self.game.player.rel) % WIDTH
         self.screen.blit(self.sky_image, (-self.sky_offset, 0))
         self.screen.blit(self.sky_image, (-self.sky_offset + WIDTH, 0))
         

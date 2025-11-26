@@ -2,6 +2,7 @@
 
 import pygame as pg
 import pygame as pg1
+from settings import ENABLE_MUSIC
 
 class Sound:
     def __init__(self, game):
@@ -16,8 +17,9 @@ class Sound:
         self.npc_shot.set_volume(0.2)
         self.player_pain = pg.mixer.Sound(self.path + 'player_pain.wav')
         self.player_pain.set_volume(0.1)
-        self.theme = pg.mixer.music.load(self.path + 'DoomSide.wav')
-        pg.mixer.music.set_volume(0.1)
+        if ENABLE_MUSIC == True:
+            self.theme = pg.mixer.music.load(self.path + 'DoomSide.wav')
+            pg.mixer.music.set_volume(0.1)
         # Dialogue section
         self.Dialogue = "resources/sound/Dialogue/"
         self.Dialogue1 = pg.mixer.Sound(self.Dialogue + "Dialogue1.flac")
@@ -37,7 +39,5 @@ class Sound:
         pg.mixer.music.set_volume(1.0)
         self.punchline6 = pg.mixer.Sound(self.punchlines + "I_knew_a_one-eyed_man_who_aimed_better.flac")
         pg.mixer.music.set_volume(1.0)
-        self.punchline7 = pg.mixer.Sound(self.punchlines + "Im_gonna_make_you_eat_your_guts2.flac")
-        pg.mixer.music.set_volume(1.0)
-        self.punchline8 = pg.mixer.Sound(self.punchlines + "Im_kick_your_ass_in_style.flac")
+        self.punchline7 = pg.mixer.Sound(self.punchlines + "Im_kick_your_ass_in_style.flac")
         pg.mixer.music.set_volume(1.0)
