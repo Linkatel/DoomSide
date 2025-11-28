@@ -3,7 +3,7 @@
 from settings import *
 import pygame as pg
 from object_renderer import *
-import math
+import math, time
 
 class Player:
     def __init__(self, game):

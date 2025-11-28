@@ -100,7 +100,7 @@ class Game:
         self.weapon.update()
         pg.display.flip()
         self.delta_time = max(self.clock.tick(FPS) / 1000, 0.0001)
-        pg.display.set_caption('DoomSide')                 #afficher les fps sur la fenetre : f'{self.clock.get_fps():.1f}'
+        pg.display.set_caption('DoomSide' + f'{self.clock.get_fps():.1f}')                 #afficher les fps sur la fenetre : f'{self.clock.get_fps():.1f}'
         
         
     def draw(self):
@@ -119,14 +119,14 @@ class Game:
                 self.global_trigger = True
 
             # Sélectionner un seul NPC pour jouer la punchline
-            if event.type == NPC_PUNCHLINE_EVENT and not punchline_triggered:
-                if self.object_handler.npc_list:
-                    npc = random.choice(self.object_handler.npc_list)  # Choisit un NPC au hasard
-                    npc.handle_event(event)
-                    punchline_triggered = True  # Bloque les autres NPC pour cet événement
+            #if event.type == NPC_PUNCHLINE_EVENT and not punchline_triggered:
+                #if self.object_handler.npc_list:
+                    #npc = random.choice(self.object_handler.npc_list)  # Choisit un NPC au hasard
+                    #npc.handle_event(event)
+                    #punchline_triggered = True  # Bloque les autres NPC pour cet événement
 
-            for npc in self.object_handler.npc_list:
-                npc.handle_event(event)
+            #for npc in self.object_handler.npc_list:
+            #    npc.handle_event(event)
 
             self.player.single_fire_event(event)
         

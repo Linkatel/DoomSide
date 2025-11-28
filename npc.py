@@ -97,20 +97,20 @@ class NPC(AnimatedSprite):
             # Planifier le punchline après 1 seconde (1000 ms)
             pg.time.set_timer(NPC_PUNCHLINE_EVENT, 1000, loops=1)
 
-    def handle_event(self, event):
-        """ Gère les événements pour tous les NPC """
-        if event.type == NPC_PUNCHLINE_EVENT:
-            punchline_sounds = [
-                self.game.sound.punchline1,
-                self.game.sound.punchline2,
-                self.game.sound.punchline3,
-                self.game.sound.punchline4,
-                self.game.sound.punchline5,
-                self.game.sound.punchline6,
-                self.game.sound.punchline7,
-            ]
-            self.selected_punchline = random.choice(punchline_sounds)
-            self.game.sound.punchline_channel.play(self.selected_punchline, loops=0) # 'Sound' object has no attribute 'punchline_channel'
+   # def handle_event(self, event):
+        #""" Gère les événements pour tous les NPC """
+        #if event.type == NPC_PUNCHLINE_EVENT:
+        #    punchline_sounds = [
+        #        self.game.sound.punchline1,
+        #        self.game.sound.punchline2,
+        #        self.game.sound.punchline3,
+        #        self.game.sound.punchline4,
+        #        self.game.sound.punchline5,
+        #        self.game.sound.punchline6,
+        #        self.game.sound.punchline7,
+        #    ]
+        #    self.selected_punchline = random.choice(punchline_sounds)
+        #    self.game.sound.punchline_channel.play(self.selected_punchline, loops=0) # 'Sound' object has no attribute 'punchline_channel'
 
 
 
